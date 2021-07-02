@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.strategy.TransaccionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-02T19:28:24" hostname="CO0C02DD2QYML85" time="0.219">
+  <properties/>
+  <testcase name="Test Transaccion deposito" classname="com.strategy.TransaccionTest" time="0.219"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
