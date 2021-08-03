@@ -1,5 +1,7 @@
 package co.com.plancrecimiento.controladores;
 
+import co.com.plancrecimiento.Dtos.PersonaDTO;
+import co.com.plancrecimiento.implementacion.servicios.ServicioDePersona;
 import co.com.plancrecimiento.modelo.Persona;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,17 +14,13 @@ import java.util.Map;
 @RestController
 public class ControladorPersona {
 
-    // Recordar que este mapa es temporal ya que no existe la capa de Persistencia
+    private ServicioDePersona servicioDePersona;
     private static Map<Long, Persona> mapaDePersonas = new HashMap<Long, Persona>();
 
     @PostMapping(path="/personas")
-    public ResponseEntity<Persona> crearPersona(@RequestBody Persona persona ){
-        ResponseEntity<Persona> respuesta = null;
-        persona.setId(generarIdParaPersona());
-        mapaDePersonas.put(persona.getId(), persona);
-        respuesta = new ResponseEntity(persona, HttpStatus.CREATED);
-
-        return respuesta;
+    public ResponseEntity<PersonaDTO> crearPersona(@RequestBody PersonaDTO persona ){
+        PersonaDTO personaDTO = servicioDePersona.crearPersona(persona);
+        return new ResponseEntity<>(personaDTO, HttpStatus.CREATED);
     }
 
     @DeleteMapping(path="/personas/{id}")
