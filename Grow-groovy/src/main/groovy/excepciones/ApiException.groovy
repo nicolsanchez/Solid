@@ -1,0 +1,4 @@
+package excepciones
+
+class ApiException {
+}
