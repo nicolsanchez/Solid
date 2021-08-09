@@ -20,4 +20,13 @@ class ServicioDePersonaTest {
         assertEquals(thrown.getMessage(), "Revise los datos de entrada")
         assertEquals(thrown.getStatusCode(), HttpStatus.BAD_REQUEST.value())
     }
+
+    @Test
+    void borrarPersonaPorIdNullTest(){
+        ApiException thrown =  assertThrows(ApiException.class,()->{
+            servicioDePersona.borrarPersonaPorCedula()
+        });
+        assertEquals(thrown.getMessage(), "Revise los datos de entrada")
+        assertEquals(thrown.getStatusCode(), HttpStatus.BAD_REQUEST.value())
+    }
 }

@@ -27,7 +27,7 @@ class ControladorPersona {
 
    @PostMapping(path="/personas")
     ResponseEntity<Persona> postPersona(@RequestBody Persona persona){
-        Persona personaDTO = servicioDePersona.crearPersona(new Persona(1038429482, "Nicolas", "Sanchez"))
+        Persona personaDTO = servicioDePersona.crearPersona(persona)
         return new ResponseEntity<>(personaDTO, HttpStatus.CREATED)
     }
 
@@ -37,8 +37,8 @@ class ControladorPersona {
     }
 
     @DeleteMapping(path="/personas/{id}")
-     ResponseEntity<Persona> deleteEmployee(@PathVariable Long id) {
-        return new ResponseEntity<Persona>(servicioDePersona.borrarPersonaPorCedula(id), HttpStatus.OK)
+     ResponseEntity<Boolean> deleteEmployee(@PathVariable Long id) {
+        return new ResponseEntity<Boolean>(servicioDePersona.borrarPersonaPorCedula(id), HttpStatus.OK)
     }
 
     /*@GetMapping(path="/personas")

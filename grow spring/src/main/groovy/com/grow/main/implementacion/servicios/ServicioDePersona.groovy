@@ -36,6 +36,9 @@ class ServicioDePersona implements IServicioDePersona {
 
     @Override
     boolean borrarPersonaPorCedula(Long id){
+        if(id == null){
+            throw new ApiException("400", "Revise los datos de entrada", HttpStatus.BAD_REQUEST.value())
+        }
         boolean isDeleted = servicioDePersistencia.borrarPersonaPorCedula(id)
         if(!isDeleted){
             throw new ApiException("404", "Persona no encontrada", HttpStatus.NOT_FOUND.value())
