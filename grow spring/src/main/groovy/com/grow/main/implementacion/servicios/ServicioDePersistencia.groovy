@@ -18,11 +18,16 @@ class ServicioDePersistencia implements IServicioDePersistencia {
     }
     @Override
     void actualizarPersona(Long Cedula, Persona personaDTO){
-        mapaDePersonas.replace(Cedula, personaDTO)
+        if (mapaDePersonas.containsKey(Cedula)) {
+            mapaDePersonas.replace(Cedula, personaDTO)
+        }
     }
     @Override
     Persona obtenerPersonaPorCedula(Long Cedula){
-        return mapaDePersonas.get(Cedula)
+        if (mapaDePersonas.containsKey(Cedula)) {
+            return mapaDePersonas.get(Cedula)
+        }
+        return null
     }
     @Override
     boolean borrarPersonaPorCedula(Long Cedula){

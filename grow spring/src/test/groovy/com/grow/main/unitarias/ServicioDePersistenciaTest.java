@@ -4,6 +4,8 @@ import com.grow.main.Dtos.Persona;
 import com.grow.main.implementacion.servicios.ServicioDePersistencia;
 import org.junit.jupiter.api.Test;
 
+import java.awt.print.Book;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ServicioDePersistenciaTest {
@@ -17,13 +19,14 @@ class ServicioDePersistenciaTest {
     void guardarPersona() {
         Persona persona = dadoQueExisteUnaPersona(nicolas);
         assertEquals(persona, nicolas);
+
     }
 
     @Test
     void guardarPersonaIdYaExistente() {
         Persona personaexistente = dadoQueExisteUnaPersona(nicolas);
         persistencia.guardarPersona(new Persona(103564234, "Andres", "Gonzalez"));
-        assertEquals(personaexistente, persistencia.obtenerPersonaPorCedula(103564234L));
+        assertNotEquals(personaexistente.getNombre(), persistencia.obtenerPersonaPorCedula(103564234L).getNombre());
     }
 
     @Test
@@ -54,5 +57,7 @@ class ServicioDePersistenciaTest {
         Persona nuevapersona =  persistencia.guardarPersona(persona);
         return nuevapersona;
     }
+
+
 
 }
